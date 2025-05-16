@@ -1,5 +1,3 @@
-BIT_LEN = 3
-
 commands = {"HLT": 0, "STO": 1, "LD": 2}
 
 codeInstructions = []
@@ -22,6 +20,7 @@ for line in codeInstructions:
 
     if line.endswith(":"):
         tags[line[:-1]] = lineIndex
+        continue
 
     command = line.split(" ")[0]
 
@@ -37,10 +36,6 @@ for line in codeInstructions:
     if param in tags.keys():
         param = tags[param]
 
-    if len(param) > BIT_LEN:
-        raise SyntaxError("Wrong word size")
-
-    param = int(param)
     compiled.append(f"{lineIndex} : {commands[command]}{param:03}")
     lineIndex += 1
 
