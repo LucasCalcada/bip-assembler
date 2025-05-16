@@ -1,3 +1,7 @@
+def toHexAdress(val):
+    return str(hex(val)).upper()[2:]
+
+
 commands = {
     "HLT": 0,
     "STO": 1,
@@ -40,7 +44,7 @@ for line in codeInstructions:
     command = line.split(" ")[0]
 
     if command == "HLT":
-        compiled.append(f"{str(hex(lineIndex)).upper()[2:]} : 0000")
+        compiled.append(f"{toHexAdress(lineIndex)} : 0000")
         lineIndex += 1
         continue
 
@@ -53,7 +57,7 @@ for line in codeInstructions:
 
     param = int(param)
     compiled.append(
-        f"{str(hex(lineIndex)).upper()[2:]} : {commands[command]}{param:03}"
+        f"{toHexAdress(lineIndex)} : {toHexAdress(commands[command])}{toHexAdress(param).zfill(3)}"
     )
     lineIndex += 1
 
