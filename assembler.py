@@ -41,4 +41,7 @@ for line in codeInstructions:
     )
     lineIndex += 1
 
-print("\n".join(compiled))
+compiledCode = "\n".join(compiled)
+with open("./output.cdm", "w") as f:
+    f.write(compiledCode)
+    f.close()
