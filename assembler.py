@@ -1,4 +1,19 @@
-commands = {"HLT": 0, "STO": 1, "LD": 2}
+commands = {
+    "HLT": 0,
+    "STO": 1,
+    "LD": 2,
+    "LDI": 3,
+    "ADD": 4,
+    "ADDI": 5,
+    "SUB": 6,
+    "SUBI": 7,
+    "JUMP": 8,
+    "NOP": 9,
+    "CMP": 10,
+    "JNE": 11,
+    "JL": 12,
+    "JG": 13,
+}
 
 codeInstructions = []
 compiled = []
