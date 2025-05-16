@@ -25,7 +25,7 @@ for line in codeInstructions:
     command = line.split(" ")[0]
 
     if command == "HLT":
-        compiled.append(f"{lineIndex} : 0000")
+        compiled.append(f"{str(hex(lineIndex)).upper()[2:]} : 0000")
         lineIndex += 1
         continue
 
@@ -36,7 +36,9 @@ for line in codeInstructions:
     if param in tags.keys():
         param = tags[param]
 
-    compiled.append(f"{lineIndex} : {commands[command]}{param:03}")
+    compiled.append(
+        f"{str(hex(lineIndex)).upper()[2:]} : {commands[command]}{param:03}"
+    )
     lineIndex += 1
 
 print("\n".join(compiled))
