@@ -52,13 +52,20 @@ for line in codeInstructions:
     if command not in commands.keys():
         raise SyntaxError(f"Command '{command}' not found")
 
-    if param in tags.keys():
-        param = tags[param]
+    if param.startswith("0x"):
+        param = param[2:]
+        compiled.append(
+            f"{toHexAdress(lineIndex)} : {toHexAdress(commands[command])}{param.zfill(3)}"
+        )
+    else:
+        if param in tags.keys():
+            param = tags[param]
 
-    param = int(param)
-    compiled.append(
-        f"{toHexAdress(lineIndex)} : {toHexAdress(commands[command])}{toHexAdress(param).zfill(3)}"
-    )
+        param = int(param)
+        compiled.append(
+            f"{toHexAdress(lineIndex)} : {toHexAdress(commands[command])}{toHexAdress(param).zfill(3)}"
+        )
+
     lineIndex += 1
 
 compiledCode = "\n".join(compiled)
