@@ -51,6 +51,7 @@ for line in codeInstructions:
     if param in tags.keys():
         param = tags[param]
 
+    param = int(param)
     compiled.append(
         f"{str(hex(lineIndex)).upper()[2:]} : {commands[command]}{param:03}"
     )
