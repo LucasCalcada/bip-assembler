@@ -9,7 +9,7 @@ CONFIG_FILE_PATH = "./config.yaml"
 class Bip:
     def __init__(self) -> None:
         self.__config = {}
-        self.instructions: dict[int, Instruction] = {}
+        self.instructions: dict[str, Instruction] = {}
 
         self.load_config()
         self.load_instructions(self.__config["instructions"])
@@ -29,4 +29,4 @@ class Bip:
                 i["constParam"], i["addressParam"], i["tagParam"]
             )
             instruction = Instruction(name, addr, paramConfig)
-            self.instructions[addr] = instruction
+            self.instructions[name] = instruction
