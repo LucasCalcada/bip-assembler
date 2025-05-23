@@ -1,0 +1,96 @@
+instructions:
+  - name: OUT
+    address: 0
+    constParam: false
+    addressParam: true
+    tagParam: false
+
+  - name: IN
+    address: 1
+    constParam: false
+    addressParam: true
+    tagParam: false
+
+  - name: JG
+    address: 2
+    constParam: true
+    addressParam: false
+    tagParam: true
+
+  - name: JL
+    address: 3
+    constParam: true
+    addressParam: false
+    tagParam: true
+
+  - name: JNE
+    address: 4
+    constParam: true
+    addressParam: false
+    tagParam: true
+
+  - name: CMP
+    address: 5
+    constParam: false
+    addressParam: true
+    tagParam: false
+
+  - name: NOP
+    address: 6
+    constParam: false
+    addressParam: false
+    tagParam: false
+
+  - name: JUMP
+    address: 7
+    constParam: true
+    addressParam: false
+    tagParam: true
+
+  - name: SUBI
+    address: 8
+    constParam: true
+    addressParam: false
+    tagParam: false
+
+  - name: SUB
+    address: 9
+    constParam: false
+    addressParam: true
+    tagParam: false
+
+  - name: ADDI
+    address: 10
+    constParam: true
+    addressParam: false
+    tagParam: false
+
+  - name: ADD
+    address: 11
+    constParam: false
+    addressParam: true
+    tagParam: false
+
+  - name: LDI
+    address: 12
+    constParam: true
+    addressParam: false
+    tagParam: false
+
+  - name: LD
+    address: 13
+    constParam: false
+    addressParam: true
+    tagParam: false
+
+  - name: STO
+    address: 14
+    constParam: false
+    addressParam: true
+    tagParam: false
+
+  - name: HLT
+    address: 15
+    constParam: false
+    addressParam: false
+    tagParam: false
