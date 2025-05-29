@@ -30,3 +30,8 @@ class Bip:
             )
             instruction = Instruction(name, addr, paramConfig)
             self.instructions[name] = instruction
+
+    def parse_instruction(self, command: str, param: str) -> str:
+        if command not in self.instructions.keys():
+            raise SyntaxError("Command not found")
+        return self.instructions[command].parseInstruction(param)

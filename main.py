@@ -8,7 +8,6 @@ parser = argparse.ArgumentParser()
 parser.add_argument("code", type=str, help="Code file path")
 
 args = parser.parse_args()
-
 processor = Bip()
 
 
@@ -26,6 +25,7 @@ code.remove("")
 lineIndex = 0
 tags: dict[str, int] = {}
 
+instructions = []
 for line in code:
     # Remove comments
     if line.startswith("#"):
@@ -38,4 +38,9 @@ for line in code:
         tags[tagName] = lineIndex
         continue
 
+    instructions.append(line)
     lineIndex += 1
+
+# Assemble code
+for line in instructions:
+    (command, param) = line.split(" ")
