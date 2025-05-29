@@ -3,6 +3,8 @@ import os
 from typing import List
 
 from bip import Bip
+from tagmanager import TagManager
+from utils import intToHex
 
 parser = argparse.ArgumentParser()
 parser.add_argument("code", type=str, help="Code file path")
@@ -23,7 +25,7 @@ with open(args.code, "r") as f:
 code.remove("")
 
 lineIndex = 0
-tags: dict[str, int] = {}
+tags = TagManager.instance()
 
 instructions = []
 for line in code:
@@ -35,12 +37,17 @@ for line in code:
     # Register tags addresses
     if line.endswith(":"):
         tagName = line[:-1]
-        tags[tagName] = lineIndex
+        tags.addTag(tagName, lineIndex)
         continue
 
     instructions.append(line)
     lineIndex += 1
 
 # Assemble code
-for line in instructions:
-    (command, param) = line.split(" ")
+with open("output.cdm", "w+", encoding="UTF-8") as f:
+    output = []
+    for i, line in enumerate(instructions):
+        (command, param) = line.split(" ")
+        instr = processor.parse_instruction(command, param)
+        output.append(f"{intToHex(i)} : {instr}\n")
+    f.writelines(output)
