@@ -35,4 +35,6 @@ class Instruction:
             return intToHex(tags.getTag(param))
 
     def parseInstruction(self, param):
+        param = Instruction.parse_param(param)
+
         return f"{self.address}{param.zfill(3)}"
