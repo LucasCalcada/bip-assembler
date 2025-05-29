@@ -29,6 +29,11 @@ tags = TagManager.instance()
 
 instructions = []
 for line in code:
+    # Remove empty lines
+    if line == "":
+        code.pop(lineIndex)
+        continue
+
     # Remove comments
     if line.startswith("#"):
         code.pop(lineIndex)
